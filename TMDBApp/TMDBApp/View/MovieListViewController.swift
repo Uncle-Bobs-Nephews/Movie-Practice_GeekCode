@@ -11,6 +11,10 @@ import SnapKit
 import Kingfisher
 
 
+protocol MovieListView: AnyObject {
+    func updateMovieList(with movies: [Movie])
+}
+
 class MovieListViewController: UIViewController {
     
     // MARK: - Model
