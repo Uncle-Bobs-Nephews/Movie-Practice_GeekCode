@@ -12,3 +12,7 @@ struct Movie {
     let releaseDate: String
     let posterPath: String
 }
+
+protocol MovieRepository {
+    func fetchNowPlayingMovies(completion: @escaping (Result<[Movie], Error>) -> Void)
+}
