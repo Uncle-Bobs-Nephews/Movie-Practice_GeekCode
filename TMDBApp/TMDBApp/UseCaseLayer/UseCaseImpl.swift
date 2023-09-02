@@ -11,6 +11,7 @@ protocol FetchNowPlayingMoviesUseCase {
     func execute(completion: @escaping (Result<[Movie], Error>) -> Void)
 }
 
+
 class FetchNowPlayingMoviesUseCaseImpl: FetchNowPlayingMoviesUseCase {
     private let movieRepository: MovieRepository
 

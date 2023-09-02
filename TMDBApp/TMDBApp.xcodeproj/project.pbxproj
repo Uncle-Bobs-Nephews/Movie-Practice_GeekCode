@@ -25,6 +25,7 @@
 		9C8959922AA2EBF200A8A272 /* MovieListPresenterImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8959912AA2EBF200A8A272 /* MovieListPresenterImpl.swift */; };
 		9C8959952AA2EBF800A8A272 /* UseCaseImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8959942AA2EBF800A8A272 /* UseCaseImpl.swift */; };
 		9C8959982AA2EC7100A8A272 /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C8959972AA2EC7100A8A272 /* MovieListViewController.swift */; };
+		9CEA0E422AA2F92D00D77482 /* MovieRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CEA0E412AA2F92D00D77482 /* MovieRepositoryImpl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		9C8959912AA2EBF200A8A272 /* MovieListPresenterImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListPresenterImpl.swift; sourceTree = "<group>"; };
 		9C8959942AA2EBF800A8A272 /* UseCaseImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseCaseImpl.swift; sourceTree = "<group>"; };
 		9C8959972AA2EC7100A8A272 /* MovieListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
+		9CEA0E412AA2F92D00D77482 /* MovieRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRepositoryImpl.swift; sourceTree = "<group>"; };
 		E1BB01992D06CEE867B0080E /* Pods-TMDBApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMDBApp.debug.xcconfig"; path = "Target Support Files/Pods-TMDBApp/Pods-TMDBApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,8 +100,8 @@
 				9C8959882AA2D91600A8A272 /* DataLayer */,
 				9C89598D2AA2EBC600A8A272 /* DomainLayer */,
 				9C8959932AA2EBF800A8A272 /* UseCaseLayer */,
-				9C8959962AA2EC7100A8A272 /* UserInterfaceLayer */,
 				9C8959902AA2EBF200A8A272 /* PresentationLayer */,
+				9C8959962AA2EC7100A8A272 /* UserInterfaceLayer */,
 				9C8959782AA27BFC00A8A272 /* View */,
 				9C8959772AA27BD000A8A272 /* Config */,
 				9C8959692AA2703E00A8A272 /* OriginalSource.swift */,
@@ -133,7 +135,6 @@
 		9C8959782AA27BFC00A8A272 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9C8959752AA278E200A8A272 /* MovieCell.swift */,
 				9C8959212A99274200A8A272 /* TVListViewController.swift */,
 			);
 			path = View;
@@ -144,6 +145,7 @@
 			children = (
 				9C8959892AA2D91600A8A272 /* MovieListModel.swift */,
 				9C89598A2AA2D91600A8A272 /* APIResponseModel.swift */,
+				9CEA0E412AA2F92D00D77482 /* MovieRepositoryImpl.swift */,
 			);
 			name = DataLayer;
 			path = TMDBApp/DataLayer;
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				9C8959972AA2EC7100A8A272 /* MovieListViewController.swift */,
+				9C8959752AA278E200A8A272 /* MovieCell.swift */,
 			);
 			name = UserInterfaceLayer;
 			path = TMDBApp/UserInterfaceLayer;
@@ -307,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9C89598F2AA2EBC600A8A272 /* MovieModel.swift in Sources */,
+				9CEA0E422AA2F92D00D77482 /* MovieRepositoryImpl.swift in Sources */,
 				9C89598B2AA2D91700A8A272 /* MovieListModel.swift in Sources */,
 				9C8959762AA278E200A8A272 /* MovieCell.swift in Sources */,
 				9C89590E2A99171F00A8A272 /* AppDelegate.swift in Sources */,
