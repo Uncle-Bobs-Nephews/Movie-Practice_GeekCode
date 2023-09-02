@@ -6,21 +6,15 @@
 //
 
 import UIKit
-import Alamofire
 import SnapKit
 import Kingfisher
 
 
-protocol MovieListView: AnyObject {
-    func updateMovieList(with movies: [Movie])
-}
-
 class MovieListViewController: UIViewController {
     
-    // MARK: - Model
-    private var model = MovieListModel()
-    
-    // MARK: - View
+    // MARK: - View Model
+    private var viewModel = MovieListViewModel()
+
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "영화 리스트"
@@ -59,45 +53,25 @@ class MovieListViewController: UIViewController {
         }
     }
 
-    
-    func fetchData() {
-        let headers: HTTPHeaders = [ "accept": "application/json" ]
-        
-        AF.request("https://api.themoviedb.org/3/movie/now_playing?api_key=\(PrivateKey.APIKey)", headers: headers).responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                do {
-                    let jsonData = try JSONSerialization.data(withJSONObject: value, options: [])
-                    let decoder = JSONDecoder()
-                    let entityData = try decoder.decode(APIResponseModel.self, from: jsonData)
-                    let movies = entityData.results.map { movieData in
-                        return Movie(title: movieData.title,
-                                     releaseDate: movieData.releaseDate,
-                                     posterPath: movieData.posterPath)
-                    }
-                    self.model.update(with: movies)
-                    self.tableView.reloadData()
-                } catch {
-                    print(error)
-                }
-            case .failure(let error):
-                print(error)
+    private func fetchData() {
+        viewModel.fetchData { [weak self] in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
             }
         }
     }
-
 }
 
 extension MovieListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.movieList.count
+        return viewModel.numberOfMovies()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MovieCell.identifier, for: indexPath) as! MovieCell
         
-        let movie = model.movieList[indexPath.row]
+        let movie = viewModel.movie(at: indexPath.row)
 
         cell.dateLabel.text = movie.releaseDate
         cell.titleLabel.text = movie.title
@@ -118,7 +92,7 @@ extension MovieListViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        print("Selected: \(model.movieList[indexPath.row])")
+        print("Selected: \(viewModel.movie(at: indexPath.row))")
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
